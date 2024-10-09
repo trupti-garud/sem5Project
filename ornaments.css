@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgb(223, 224, 222);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #8B4513;
+}
+
+p {
+    line-height: 1.6;
+    color: #333;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #8B4513;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.image-gallery {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.image-item {
+    flex-basis: 30%; /* 3 images per row */
+    margin-bottom: 20px;
+}
+
+.image-item img {
+    width: 150%;
+    height: auto;
+    display: block;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+.container1{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.container1 .product{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem,1fr));
+    gap:2rem;
+}
+.container1 .product.product-image{
+    text-align: center;
+    padding: 3rem 2rem;
+    background: white;
+    box-shadow: 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    outline:.1rem sloid white;
+    outline-offset: -1.5rem;
+    cursor: pointer;
+}
+.container1 .product.product-image
+    .product .product-image:hover{
+
+    outline-offset: 0;
+
+}
+.product .product-image img{
+    height: 25rem;
+}
+.product .product-image:hover img{
+    transform: scale(.9);
+}
+.text{
+    font: size 18px;;
+}
+
+.buy-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #8B4513;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.buy-button:hover {
+    background-color: #5c3010;
+    transition: background-color 0.3s ease;
+}
+@media (max-width: 768px) {
+    .image-item {
+        flex-basis: 45%;
+    }
+    .product {
+        flex-direction: column;
+    }
+    .product-image {
+        margin-bottom: 20px;
+    }
+}
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+}

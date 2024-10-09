@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <link rel="stylesheet" href="invoice.css">
+</head>
+<body>
+    <div id="invoiceContainer">
+        <h1>Invoice</h1>
+        <div class="invoiceDetails">
+            <img id="productImage" alt="Product Image">
+            <p><strong>Product Name:</strong> <span id="productName"></span></p>
+            <p><strong>Price:</strong> ₹<span id="productPrice"></span></p>
+        </div>
+    </div>
+
+    <script>
+      // Get URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const productName = urlParams.get('name');
+      const productPrice = urlParams.get('price');
+      const productImage = urlParams.get('image');
+
+      // Display the data in the invoice
+      document.getElementById('productName').textContent = productName;
+      document.getElementById('productPrice').textContent = productPrice;
+      document.getElementById('productImage').src = productImage;
+      document.getElementById('productImage').alt = productName;
+    </script>
+</body>
+</html>
