@@ -7,27 +7,100 @@
     <link rel="stylesheet" href="invoice.css">
 </head>
 <body>
-    <div id="invoiceContainer">
-        <h1>Invoice</h1>
-        <div class="invoiceDetails">
-            <img id="productImage" alt="Product Image">
-            <p><strong>Product Name:</strong> <span id="productName"></span></p>
-            <p><strong>Price:</strong> ₹<span id="productPrice"></span></p>
+    <div class="container">
+        <h2><u>INVOICE</u></h2>
+        <div class="invoiceWrapper">
+            <div class="imageSection">
+                <img id="productImage" src="default.jpeg" alt="Product Image">
+            </div>
+            <div class="detailsSection">
+                <div class="productDetail">
+                    <label for="productName">Product Name: </label>
+                    <span id="productName">Loading...</span>
+                </div>
+                <div class="productDetail">
+                    <label for="productPrice">Price: </label>
+                    <span id="productPrice">₹1200</span>
+                </div>
+                <div class="productDetail">
+                    <label for="quantity">Quantity: </label>
+                    <button id="decreaseQty">-</button>
+                    <span id="productQuantity">1</span>
+                    <button id="increaseQty">+</button>
+                </div>
+                <div class="productDetail">
+                    <label for="totalAmount">Total: </label>
+                    <span id="totalAmount">₹0.00</span>
+                </div>
+                <button id="addToCartBtn" class="addToCart">Add to Cart</button>
+                <button id="billBtn" class="billBtn">BILL</button>
+                <div class="cartItems">
+                    <p>Items in Cart: <span id="cartItems">0</span></p>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-      // Get URL parameters
-      const urlParams = new URLSearchParams(window.location.search);
-      const productName = urlParams.get('name');
-      const productPrice = urlParams.get('price');
-      const productImage = urlParams.get('image');
+        // Function to get query parameters from URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
 
-      // Display the data in the invoice
-      document.getElementById('productName').textContent = productName;
-      document.getElementById('productPrice').textContent = productPrice;
-      document.getElementById('productImage').src = productImage;
-      document.getElementById('productImage').alt = productName;
+        // Variables
+        let quantity = 1;
+        let cartCount = 0;
+
+        // Get product details from URL
+        const productName = getQueryParam('name');
+        const productPrice = parseFloat(getQueryParam('price')) || 0;
+        const productImage = getQueryParam('image'); // Get image URL from query parameter
+
+        // Set the initial values
+        document.getElementById('productName').textContent = productName;
+        document.getElementById('productPrice').textContent = `₹${productPrice.toFixed(2)}`;
+        document.getElementById('totalAmount').textContent = `₹${(productPrice * quantity).toFixed(2)}`;
+
+        // Set the product image dynamically
+        if (productImage) {
+            document.getElementById('productImage').src = productImage;
+        }
+
+        // Update the total price based on quantity
+        function updateTotal() {
+            const totalPrice = (productPrice * quantity).toFixed(2);
+            document.getElementById('totalAmount').textContent = `₹${totalPrice}`;
+            document.getElementById('productQuantity').textContent = quantity;
+        }
+
+        // Increase quantity
+        document.getElementById('increaseQty').addEventListener('click', () => {
+            quantity++;
+            updateTotal();
+        });
+
+        // Decrease quantity
+        document.getElementById('decreaseQty').addEventListener('click', () => {
+            if (quantity > 1) {
+                quantity--;
+                updateTotal();
+            }
+        });
+
+        // Add to cart functionality
+        document.getElementById('addToCartBtn').addEventListener('click', () => {
+            cartCount += quantity;
+            document.getElementById('cartItems').textContent = cartCount;
+            alert(`${quantity} item(s) added to the cart!`);
+        });
+
+        // Redirect to the bill page
+        document.getElementById('billBtn').addEventListener('click', () => {
+            const totalPrice = (productPrice * quantity).toFixed(2);
+            window.location.href = `bill.html?name=${productName}&price=${totalPrice}&quantity=${quantity}`;
+        });
+
     </script>
 </body>
 </html>

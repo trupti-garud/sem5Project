@@ -1,73 +1,94 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     width: 100%;
     height: 100%;
     font-family: serif;
 }
-#fabricContainer{
+
+#fabricContainer {
     padding: 2vw;
     width: 100%;
     height: 100%;
 }
-#fabricContainer h1{
+
+#fabricContainer h1 {
     font-size: 5vw;
     text-align: center;
-
 }
-.imageContainer{
+
+.imageContainer {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 2vw ;
+    margin-top: 2vw;
 }
-.imageContainer > img{
+
+.imageContainer > img {
     width: 500px;
     height: 1200px;
     object-fit: cover;
     border-radius: 2vw;
 }
-.fabricContent{
+
+.fabricContent {
     margin-top: 3vw;
     width: 100%;
     height: 100%;
 }
-.fabricContent i{
+
+.fabricContent i {
     font-size: 1.5vw;
 }
-.fabricHistory{
+
+.fabricHistory {
     margin-block: 2vw;
 }
-.productContainer{
+
+.productContainer {
     margin-block: 2vw;
     width: 100%;
     height: 100%;
 }
-.productContainer h2{
+
+.productContainer h2 {
     font-size: 4vw;
     text-align: center;
 }
-.products{
+
+.products {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    margin-block: 2vw;
+    gap: 2vw;
+}
+
+.product {
+    flex: 1 1 calc(25% - 2vw);
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
-.productDetails{
+
+.productDetails {
     width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 5vw;
+    gap: 1vw;
     margin-block: .5vw;
 }
-.productDetails strong{
+
+.productDetails strong {
     font-size: 1.2vw;
     line-height: 1.2vw;
 }
-.productDetails .buyBtn{
+
+.productDetails .buyBtn {
     border: none;
     border-radius: 1vw;
     padding: 1vw;
@@ -75,8 +96,9 @@ body{
     background-color: green;
     cursor: pointer;
 }
-.product img{
-    width: 75%;
-    height: 35%;
+
+.product img {
+    width: 100%;
+    height: auto;
     object-fit: cover;
 }

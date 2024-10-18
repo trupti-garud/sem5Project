@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Bill</title>
+    <link rel="stylesheet" href="bill.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Final Bill</h2>
+        <div class="billWrapper">
+            <div class="billDetails">
+                <p><strong>Product Name:</strong> <span id="billProductName">Loading...</span></p>
+                <p><strong>Quantity:</strong> <span id="billQuantity">0</span></p>
+                <p><strong>Total Amount:</strong> ₹<span id="billTotalAmount">0.00</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to get query parameters from URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Get product details from the URL parameters
+        const productName = getQueryParam('name');
+        const productQuantity = getQueryParam('quantity');
+        const totalPrice = getQueryParam('price');
+
+        // Set the bill details dynamically
+        document.getElementById('billProductName').textContent = productName;
+        document.getElementById('billQuantity').textContent = productQuantity;
+        document.getElementById('billTotalAmount').textContent = totalPrice;
+    </script>
+</body>
+</html>
